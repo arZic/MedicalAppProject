@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by dormoy.corentyn on 06/12/2017.
@@ -31,13 +32,16 @@ public class PatientAdapter extends ArrayAdapter<Patient> {
         Patient patientSelectionne = getItem(position);
 
         TextView nomTextView = (TextView) listItemView.findViewById(R.id.nom);
-        nomTextView.setText(patientSelectionne.get_nom());
+        nomTextView.setText("Nom : " + patientSelectionne.get_libelle());
 
-        TextView chambreTextView = (TextView) listItemView.findViewById(R.id.chambre);
-        chambreTextView.setText("" + patientSelectionne.get_dateNaissance());
+        TextView naissanceTextView = (TextView) listItemView.findViewById(R.id.naissance);
+        naissanceTextView.setText("Naissance : " + patientSelectionne.get_dateNaissance());
 
-        TextView motifTextView = (TextView) listItemView.findViewById(R.id.motif);
-        motifTextView.setText(patientSelectionne.get_motif());
+        TextView motifTextView = (TextView) listItemView.findViewById(R.id.chambre);
+        motifTextView.setText("Chambre : " + patientSelectionne.get_chambre());
+
+        ImageView iconeImageView = (ImageView) listItemView.findViewById(R.id.icone);
+        iconeImageView.setImageResource(patientSelectionne.get_image());
 
         return listItemView;
     }

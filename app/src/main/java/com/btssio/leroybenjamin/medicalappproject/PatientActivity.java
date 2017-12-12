@@ -9,6 +9,7 @@ import android.widget.ListView;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 public class PatientActivity extends AppCompatActivity {
@@ -19,9 +20,9 @@ public class PatientActivity extends AppCompatActivity {
         setContentView(R.layout.activity_patient);
 
         ArrayList<Patient> lesPatients = new ArrayList<Patient>();
-        lesPatients.add(new Patient("Dupuis", "Joseph", new Date(20/12/1960), "C410", R.drawable.joseph));
-        lesPatients.add(new Patient("Dupont", "Claire", new Date(18/12/1997), "C412", R.drawable.claire));
-        lesPatients.add(new Patient("Champs", "Olivier", new Date(02/03/1978), "C413", R.drawable.olivier));
+        lesPatients.add(new Patient("Dupuis", "Joseph", new Date(1960-12-12), "C410", R.drawable.joseph, "Mal au ventre"));
+        lesPatients.add(new Patient("Dupont", "Claire", new Date(18/12/1997), "C412", R.drawable.claire, "Trop chelou"));
+        lesPatients.add(new Patient("Champs", "Olivier", new Date(02/03/1978), "C413", R.drawable.olivier, "Cancer"));
 
         PatientAdapter adapterPatients = new PatientAdapter(this, lesPatients);
         ListView listViewPatients = (ListView) findViewById(R.id.listView_patients);

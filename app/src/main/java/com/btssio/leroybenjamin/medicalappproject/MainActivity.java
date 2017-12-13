@@ -6,8 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -15,14 +13,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TextView textviewCreer = (TextView) findViewById(R.id.textviewCreer);
-        TextView textviewVoir = (TextView) findViewById(R.id.textviewVoir);
+        TextView textViewVoir = (TextView) findViewById((R.id.textviewVoir));
+        TextView textViewCreer = (TextView) findViewById((R.id.textviewCreer));
 
-        textviewCreer.setOnClickListener(new View.OnClickListener(){
+        textViewVoir.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
-                Intent intentPatient = new Intent(MainActivity.this, PatientActivity.class);
+            public void onClick(View v) {
+                Intent intentPatient = new Intent(MainActivity.this,PatientActivity.class);
                 startActivity(intentPatient);
+
+            }
+        });
+
+        textViewCreer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentPatient = new Intent(MainActivity.this,CreateActivity.class);
+                startActivity(intentPatient);
+
             }
         });
     }

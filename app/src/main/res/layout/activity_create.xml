@@ -21,7 +21,7 @@
         android:id="@+id/textviewNomPatientFormulaire"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Nom patient"
+        android:text="Nom"
         android:textSize="10dp"
         android:textStyle="bold"
         />
@@ -36,7 +36,7 @@
         android:id="@+id/textviewPrenomPatientFormulaire"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Prenom patient"
+        android:text="Prenom"
         android:textSize="10dp"
         android:textStyle="bold"
         />
@@ -51,7 +51,7 @@
         android:id="@+id/textviewMotifPatientFormulaire"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Motif patient"
+        android:text="Motif"
         android:textSize="10dp"
         android:textStyle="bold"
         />
@@ -67,15 +67,15 @@
         android:id="@+id/textviewDateNaissancePatientFormulaire"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Date de naissance patient"
+        android:text="Date de naissance (AAAA-MM-JJ)"
         android:textSize="10dp"
         android:textStyle="bold"
         />
 
-    <DatePicker
-        android:id="@+id/datepickerDateNaissancePatientFormulaire"
+    <EditText
+        android:id="@+id/edittextDate"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"/>
 
     <Button
         android:onClick="valider"
@@ -83,5 +83,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="OK"/>
+
+    <Button
+        android:onClick="voir"
+        android:id="@+id/buttonVoirPatientFormulaire"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="VOIR"/>
 
 </LinearLayout>

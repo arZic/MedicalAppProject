@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,9 +14,9 @@ import java.util.ArrayList;
  * Created by dormoy.corentyn on 06/12/2017.
  */
 
-public class PatientAdapter {
-    public PatientAdapter(Activity context, ArrayList<Patient> mots) {
-        super(context, 0, mots);
+public class PatientAdapter extends ArrayAdapter<Patient> {
+    public PatientAdapter(Activity context, ArrayList<Patient> patients) {
+        super(context, 0, patients);
     }
 
     @Override
@@ -28,14 +29,15 @@ public class PatientAdapter {
         }
 
         Patient patientSelectionne = getItem(position);
-        TextView nameTextView = (TextView) listItemView.findViewById(R.id.motEn);
-        nameTextView.setText(patientSelectionne.get_motEn());
 
-        TextView numberTextView = (TextView) listItemView.findViewById(R.id.motFr);
-        numberTextView.setText(patientSelectionne.get_motFr());
+        TextView nomTextView = (TextView) listItemView.findViewById(R.id.nom);
+        nomTextView.setText(patientSelectionne.get_nom());
 
-        ImageView iconView = (ImageView) listItemView.findViewById(R.id.iconeItem);
-        iconView.setImageResource(patientSelectionne.get_image());
+        TextView chambreTextView = (TextView) listItemView.findViewById(R.id.chambre);
+        chambreTextView.setText("" + patientSelectionne.get_dateNaissance());
+
+        TextView motifTextView = (TextView) listItemView.findViewById(R.id.motif);
+        motifTextView.setText(patientSelectionne.get_motif());
 
         return listItemView;
     }

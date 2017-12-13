@@ -30,6 +30,11 @@ public class Patient extends SugarRecord implements Serializable {
     private String _nom;
     private String _prenom;
     private String _dateNaissance;
+
+    public void set_motif(String monMotif) {
+        this._motif = monMotif;
+    }
+
     private String _motif;
 
     public Patient (String unNom, String unPrenom, String uneDateNaissance, String unMotif){

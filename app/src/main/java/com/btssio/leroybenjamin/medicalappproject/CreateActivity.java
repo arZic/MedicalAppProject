@@ -1,10 +1,13 @@
 package com.btssio.leroybenjamin.medicalappproject;
 
+import android.content.Intent;
+import android.support.annotation.MainThread;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CalendarView;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -28,7 +31,8 @@ public class CreateActivity extends AppCompatActivity {
         final EditText editTextPrenom = (EditText) findViewById(R.id.editviewPrenomFormulaire);
         final Spinner spinnerMotif = (Spinner) findViewById(R.id.spinnerMotifFormulaire);
         //final DatePicker datePickerNaissance = (DatePicker) findViewById(R.id.datepickerDateNaissancePatientFormulaire);
-        final EditText editTextDate = (EditText) findViewById((R.id.edittextDate));
+        //final EditText editTextDate = (EditText) findViewById((R.id.edittextDate));
+        final DatePicker calendarDate = (DatePicker) findViewById(R.id.calendarDate);
         final Button buttonValider = (Button) findViewById(R.id.buttonValiderPatientFormulaire);
 
         List<String> spinnerArray =  new ArrayList<String>();
@@ -48,8 +52,11 @@ public class CreateActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Patient monPatient = new Patient("Dupuis", "Joseph", new Date(20/12/1960), "C410", R.drawable.joseph);
-                Patient monPatient = new Patient(""+editTextNom, ""+editTextPrenom, ""+editTextDate, ""+spinnerMotif);
+                Patient monPatient = new Patient(""+editTextNom, ""+editTextPrenom, ""+calendarDate, ""+spinnerMotif);
                 monPatient.save();
+                Intent intent = new Intent(CreateActivity.this, MainActivity.class);
+                //intent.putExtra("Patient", (Serializable)monPatient);
+                startActivity(intent);
                 //Patient patientbdd = Patient.first(Patient.class);
                 //Toast.makeText(CreateActivity.this, patientbdd.get_nom(), Toast.LENGTH_SHORT).show();
             }

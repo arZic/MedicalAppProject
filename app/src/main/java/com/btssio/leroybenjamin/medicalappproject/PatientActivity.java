@@ -19,15 +19,16 @@ public class PatientActivity extends AppCompatActivity {
         setContentView(R.layout.activity_patient);
 
         ArrayList<Patient> lesPatients = new ArrayList<Patient>();
-        lesPatients.add(new Patient("Dupuis", "Joseph", "20/12/1960", "1"));
+        /*lesPatients.add(new Patient("Dupuis", "Joseph", "20/12/1960", "1"));
         lesPatients.add(new Patient("Dupont", "Claire", "18/12/1997", "2"));
-        //lesPatients.add(new Patient("Champs", "Olivier", new Date(02/03/1978, "C413", R.drawable.olivier));
-
+        //lesPatients.add(new Patient("Champs", "Olivier", new Date(02/03/1978, "C413", R.drawable.olivier));*/
+        Patient monPatient = Patient.first(Patient.class);
+        lesPatients.add(monPatient);
         PatientAdapter adapterPatients = new PatientAdapter(this, lesPatients);
         ListView listViewPatients = (ListView) findViewById(R.id.listView_patients);
         listViewPatients.setAdapter(adapterPatients);
 
-        /* listViewPatients.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+         listViewPatients.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Patient monPatient;
@@ -36,6 +37,6 @@ public class PatientActivity extends AppCompatActivity {
                 intent.putExtra("Patient", (Serializable)monPatient);
                 startActivity(intent);
             }
-        }); */
+        });
     }
 }

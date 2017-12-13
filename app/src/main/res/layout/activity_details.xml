@@ -46,7 +46,7 @@
         android:onClick="modifierDetails"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Modifier"
+        android:text="Modifier le motif"
         android:id="@+id/btn_edit"
         />
 
@@ -54,7 +54,7 @@
         android:onClick="supprimerDetails"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Supprimer"
+        android:text="Supprimer le patient"
         android:id="@+id/btn_delete"
         />
 

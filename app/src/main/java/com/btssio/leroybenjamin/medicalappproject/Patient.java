@@ -1,6 +1,7 @@
 package com.btssio.leroybenjamin.medicalappproject;
 
 import com.orm.SugarRecord;
+import com.orm.dsl.Unique;
 
 import java.io.Serializable;
 import java.text.DateFormat;
@@ -19,7 +20,7 @@ public class Patient extends SugarRecord implements Serializable {
         return _prenom;
     }
 
-    public String get_dateNaissance() {
+    public Date get_dateNaissance() {
         return _dateNaissance;
     }
 
@@ -27,9 +28,16 @@ public class Patient extends SugarRecord implements Serializable {
         return _motif;
     }
 
+    public int get_id() {
+        return id;
+    }
+
+    @Unique
+    private int id;
+    private static int compteObjets = 1;
     private String _nom;
     private String _prenom;
-    private String _dateNaissance;
+    private Date _dateNaissance;
 
     public void set_motif(String monMotif) {
         this._motif = monMotif;
@@ -37,7 +45,14 @@ public class Patient extends SugarRecord implements Serializable {
 
     private String _motif;
 
-    public Patient (String unNom, String unPrenom, String uneDateNaissance, String unMotif){
+    public Patient()
+    {
+
+    }
+
+    public Patient (String unNom, String unPrenom, Date uneDateNaissance, String unMotif){
+        id = compteObjets;
+        compteObjets++;
         _nom = unNom;
         _prenom = unPrenom;
         _dateNaissance = uneDateNaissance;

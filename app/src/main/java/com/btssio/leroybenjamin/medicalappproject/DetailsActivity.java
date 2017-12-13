@@ -20,21 +20,23 @@ public class DetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
 
-        List<String> spinnerArray =  new ArrayList<String>();
-        spinnerArray.add("1");
-        spinnerArray.add("2");
-        spinnerArray.add("3");
+        /*List<Patient> patients = Patient.listAll(Patient.class);
+        Patient.deleteAll(Patient.class);*/
+
+        final List<String> spinnerArray =  new ArrayList<String>();
+        spinnerArray.add("Cancer");
+        spinnerArray.add("Mal à la tête");
+        spinnerArray.add("Amputation");
 
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                 this, android.R.layout.simple_spinner_item, spinnerArray);
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        Spinner sItems = (Spinner) findViewById(R.id.spinner_motifDetails);
+        final Spinner sItems = (Spinner) findViewById(R.id.spinner_motifDetails);
         sItems.setAdapter(adapter);
 
         final Patient monPatient = (Patient) getIntent().getSerializableExtra("Patient");
-        final Spinner monSpinner = (Spinner) findViewById(R.id.spinner_motifDetails);
 
         TextView textViewNom = (TextView) findViewById(R.id.textview_nom);
         textViewNom.setText(monPatient.get_nom());
@@ -57,17 +59,27 @@ public class DetailsActivity extends AppCompatActivity {
         buttonModifier.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Toast.makeText(DetailsActivity.this, monPatient.get_motif().toString(), Toast.LENGTH_SHORT).show();
-                //monPatient.set_motif(""+monSpinner);
-                //textViewMotif.setText(""+monSpinner.toString());
-                //monPatient.update();
+
+                List<Patient> lesPatients = Patient.find(Patient.class, "_nom = ?", monPatient.get_nom());
+                lesPatients.get(0).set_motif(sItems.getSelectedItem().toString());
+                lesPatients.get(0).update(); // updates the previous entry with new values.
+                textViewMotif.setText(lesPatients.get(0).get_motif().toString());
+
+                /*monPatient.set_motif(monSpinner.getSelectedItem().toString());
+
+                monPatient.update();*/
+
+                Intent intent = new Intent(DetailsActivity.this, PatientActivity.class);
+                startActivity(intent);
             }
         });
 
         buttonSupprimer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                monPatient.delete();
+                List<Patient> lesPatients = Patient.find(Patient.class, "_nom = ?", monPatient.get_nom());
+                //Toast.makeText(DetailsActivity.this, lesPatients.get(0).get_nom(), Toast.LENGTH_SHORT).show();
+                lesPatients.get(0).delete();
                 Intent intent = new Intent(DetailsActivity.this, PatientActivity.class);
                 startActivity(intent);
             }

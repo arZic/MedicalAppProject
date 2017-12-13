@@ -3,13 +3,17 @@ package com.btssio.leroybenjamin.medicalappproject;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 
 public class PatientActivity extends AppCompatActivity {
 
@@ -18,12 +22,24 @@ public class PatientActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient);
 
+
+
+        //List<Patient> patients = Patient.listAll(Patient.class);
         ArrayList<Patient> lesPatients = new ArrayList<Patient>();
-        /*lesPatients.add(new Patient("Dupuis", "Joseph", "20/12/1960", "1"));
-        lesPatients.add(new Patient("Dupont", "Claire", "18/12/1997", "2"));
-        //lesPatients.add(new Patient("Champs", "Olivier", new Date(02/03/1978, "C413", R.drawable.olivier));*/
-        Patient monPatient = Patient.first(Patient.class);
-        lesPatients.add(monPatient);
+        Iterator<Patient> iteratorPatient = Patient.findAll(Patient.class);
+
+        while(iteratorPatient.hasNext())
+
+        // (Iterator<Patient> i = lesPatients.iterator(); i.hasNext();)
+        {
+            Patient item = iteratorPatient.next();
+            lesPatients.add(item);
+        }
+
+        /*ArrayList<Patient> lesPatients = new ArrayList<Patient>();
+        Patient monPatient = Patient.last(Patient.class);
+        lesPatients.add(monPatient);*/
+
         PatientAdapter adapterPatients = new PatientAdapter(this, lesPatients);
         ListView listViewPatients = (ListView) findViewById(R.id.listView_patients);
         listViewPatients.setAdapter(adapterPatients);

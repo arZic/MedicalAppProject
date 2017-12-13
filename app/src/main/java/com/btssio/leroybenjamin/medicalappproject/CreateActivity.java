@@ -30,15 +30,13 @@ public class CreateActivity extends AppCompatActivity {
         final EditText editTextNom = (EditText) findViewById(R.id.editviewNomFormulaire);
         final EditText editTextPrenom = (EditText) findViewById(R.id.editviewPrenomFormulaire);
         final Spinner spinnerMotif = (Spinner) findViewById(R.id.spinnerMotifFormulaire);
-        //final DatePicker datePickerNaissance = (DatePicker) findViewById(R.id.datepickerDateNaissancePatientFormulaire);
-        //final EditText editTextDate = (EditText) findViewById((R.id.edittextDate));
         final DatePicker calendarDate = (DatePicker) findViewById(R.id.calendarDate);
         final Button buttonValider = (Button) findViewById(R.id.buttonValiderPatientFormulaire);
 
         List<String> spinnerArray =  new ArrayList<String>();
-        spinnerArray.add("1");
-        spinnerArray.add("2");
-        spinnerArray.add("3");
+        spinnerArray.add("Cancer");
+        spinnerArray.add("Mal à la tête");
+        spinnerArray.add("Amputation");
 
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
@@ -51,27 +49,15 @@ public class CreateActivity extends AppCompatActivity {
         buttonValider.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Patient monPatient = new Patient("Dupuis", "Joseph", new Date(20/12/1960), "C410", R.drawable.joseph);
-                Patient monPatient = new Patient(""+editTextNom, ""+editTextPrenom, ""+calendarDate, ""+spinnerMotif);
+                int year = calendarDate.getYear();
+                int month = calendarDate.getMonth();
+                int day = calendarDate.getDayOfMonth();
+                Patient monPatient = new Patient(editTextNom.getText().toString(), editTextPrenom.getText().toString(), new Date(year, month, day), spinnerMotif.getSelectedItem().toString());
                 monPatient.save();
                 Intent intent = new Intent(CreateActivity.this, MainActivity.class);
-                //intent.putExtra("Patient", (Serializable)monPatient);
                 startActivity(intent);
-                //Patient patientbdd = Patient.first(Patient.class);
-                //Toast.makeText(CreateActivity.this, patientbdd.get_nom(), Toast.LENGTH_SHORT).show();
             }
         });
-
-        /*final Button buttonVoir = (Button) findViewById(R.id.buttonVoirPatientFormulaire);
-
-
-        buttonVoir.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                List<Patient> patients = Patient.listAll(Patient.class);
-                Toast.makeText(CreateActivity.this, "", Toast.LENGTH_LONG).show();
-            }
-        });*/
     }
 
 }

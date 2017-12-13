@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.btssio.leroybenjamin.medicalappproject.DetailsActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nom : "
+        android:id="@+id/textview_nom"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Prenom : "
+        android:id="@+id/textview_prenom"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Date de naissance : "
+        android:id="@+id/textview_naissance"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Motif : "
+        android:id="@+id/textview_motif"
+        />
+
+    <Spinner
+        android:id="@+id/spinner_motifDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </Spinner>
+
+    <Button
+        android:onClick="modifierDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Modifier"
+        android:id="@+id/btn_edit"
+        />
+
+    <Button
+        android:onClick="supprimerDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Supprimer"
+        android:id="@+id/btn_delete"
+        />
+
+</LinearLayout>

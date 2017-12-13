@@ -31,14 +31,12 @@ public class Patient extends SugarRecord implements Serializable {
     private String _prenom;
     private String _dateNaissance;
     private String _motif;
-    private int _image;
 
-    public Patient (String unNom, String unPrenom, String uneDateNaissance, String unMotif, int uneImage){
+    public Patient (String unNom, String unPrenom, String uneDateNaissance, String unMotif){
         _nom = unNom;
         _prenom = unPrenom;
         _dateNaissance = uneDateNaissance;
         _motif = unMotif;
-        _image = uneImage;
     }
 
 

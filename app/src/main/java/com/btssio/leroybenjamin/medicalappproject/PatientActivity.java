@@ -19,8 +19,8 @@ public class PatientActivity extends AppCompatActivity {
         setContentView(R.layout.activity_patient);
 
         ArrayList<Patient> lesPatients = new ArrayList<Patient>();
-        lesPatients.add(new Patient("Dupuis", "Joseph", "20/12/1960", "C410", R.drawable.joseph));
-        lesPatients.add(new Patient("Dupont", "Claire", "18/12/1997", "C412", R.drawable.claire));
+        lesPatients.add(new Patient("Dupuis", "Joseph", "20/12/1960", "1"));
+        lesPatients.add(new Patient("Dupont", "Claire", "18/12/1997", "2"));
         //lesPatients.add(new Patient("Champs", "Olivier", new Date(02/03/1978, "C413", R.drawable.olivier));
 
         PatientAdapter adapterPatients = new PatientAdapter(this, lesPatients);

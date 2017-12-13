@@ -48,23 +48,23 @@ public class CreateActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Patient monPatient = new Patient("Dupuis", "Joseph", new Date(20/12/1960), "C410", R.drawable.joseph);
-                Patient monPatient = new Patient(""+editTextNom, ""+editTextPrenom, ""+editTextDate, ""+spinnerMotif, R.drawable.joseph);
+                Patient monPatient = new Patient(""+editTextNom, ""+editTextPrenom, ""+editTextDate, ""+spinnerMotif);
                 monPatient.save();
                 //Patient patientbdd = Patient.first(Patient.class);
                 //Toast.makeText(CreateActivity.this, patientbdd.get_nom(), Toast.LENGTH_SHORT).show();
             }
         });
 
-        final Button buttonVoir = (Button) findViewById(R.id.buttonVoirPatientFormulaire);
+        /*final Button buttonVoir = (Button) findViewById(R.id.buttonVoirPatientFormulaire);
 
 
         buttonVoir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 List<Patient> patients = Patient.listAll(Patient.class);
-                //Toast.makeText(CreateActivity.this, "", Toast.LENGTH_LONG).show();
+                Toast.makeText(CreateActivity.this, "", Toast.LENGTH_LONG).show();
             }
-        });
+        });*/
     }
 
 }
